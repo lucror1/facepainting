@@ -1,0 +1,95 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+body > h2 {
+    margin-top: 2em;
+    margin-bottom: 0px;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+#can {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    border-width: 5px;
+    background-color: #1c2045;
+}
+
+.hideMouse {
+    cursor: none;
+}
+
+.canvasContainer {
+    text-align: center;
+}
+
+.canvasCell {
+    display: inline-block;
+    margin: 0.25em;
+    padding: 0.25em;
+}
+
+.buttonMenu, .settingsMenu {
+    text-align: center;
+}
+
+.buttonMenu {
+    margin-top: 1em;
+}
+
+button {
+    border: 2px solid black;
+    border-radius: 5px;
+
+    background-color: lightgray;
+
+    width: 75px;
+    height: 30px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.settingsMenu > p {
+    display: inline-block;
+    margin: 0.5em;
+}
+
+#widthInput {
+    vertical-align: middle;
+    margin-right: 0.25em;
+}
+
+#widthOutput {
+    display: inline-block;
+    width: 25px;
+}
+
+.selected {
+    border-width: 2px;
+}
+
+#helpScreen {
+    border: 5px solid black;
+    border-radius: 5px;
+    background-color: white;
+    
+    width: 50%;
+
+    /*
+    Darken everything else
+    https://www.geeksforgeeks.org/how-to-dim-entire-screen-except-a-fixed-area-using-javascript/
+    */
+    box-shadow: 0 0 0 1000vmax rgba(0, 0, 0, .5);
+
+    position: fixed;
+    top: 3%;
+    left: 25%;
+}

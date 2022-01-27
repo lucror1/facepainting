@@ -1,0 +1,122 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <title>index</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="index.css"/>
+    <!-- Ask if this is allowed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gl-matrix/2.8.1/gl-matrix-min.js"
+            integrity="sha512-zhHQR0/H5SEBL3Wn6yYSaTTZej12z0hVZKOv3TwCUXT1z5qeqGcXJLLrbERYRScEDDpYIJhPC1fk31gqR783iQ=="
+            crossorigin="anonymous" defer>
+    </script>
+    <script src="classes/Point.js"></script>
+    <script src="classes/Curve.js"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>Paul Warner's Mysterious Floating Cube</h1>
+    <canvas id="can" width="800" height="500">
+        Canvas support is required.
+    </canvas>
+    <div class="settingsMenu" hidden>
+        <!-- This allows the rotation to be preserved across reloads. Hacky but useful. -->
+        <p>X Rotation: <input id="xaxis" type="range" min="0" max="360" value="0"></p>
+        <p>Y Rotation: <input id="yaxis" type="range" min="0" max="360" value="0"></p>
+        <p>Z Rotation: <input id="zaxis" type="range" min="0" max="360" value="0"></p>
+
+        <!-- This allows the background colors to be preserved between reloads -->
+        <input id="topColor" type="color" value="#FFFFFF">
+        <input id="bottomColor" type="color" value="#FFFFFF">
+        <input id="leftColor" type="color" value="#FFFFFF">
+        <input id="rightColor" type="color" value="#FFFFFF">
+        <input id="frontColor" type="color" value="#FFFFFF">
+        <input id="backColor" type="color" value="#FFFFFF">
+    </div>
+    
+    <h2>Face Painting</h2>
+    <div class="canvasContainer">
+        <div class="row">
+            <div class="canvasCell">
+                <p>Left Face</p>
+                <canvas id="left" class="paintable" width="200" height="200"></canvas>
+                <p><input id="leftFile" type="file" accept="image/jpeg, image/png"></p>
+            </div>
+            <div class="canvasCell">
+                <p>Top Face</p>
+                <canvas id="top" class="paintable" width="200" height="200"></canvas>
+                <p><input id="topFile" type="file" accept="image/jpeg, image/png"></p>
+            </div>
+            <div class="canvasCell">
+                <p>Front Face</p>
+                <canvas id="front" class="paintable" width="200" height="200"></canvas>
+                <p><input id="frontFile" type="file" accept="image/jpeg, image/png"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="canvasCell">
+                <p>Right Face</p>
+                <canvas id="right" class="paintable" width="200" height="200"></canvas>
+                <p><input id="rightFile" type="file" accept="image/jpeg, image/png"></p>
+            </div>
+            <div class="canvasCell">
+                <p>Bottom Face</p>
+                <canvas id="bottom" class="paintable" width="200" height="200"></canvas>
+                <p><input id="bottomFile" type="file" accept="image/jpeg, image/png"></p>
+            </div>
+            <div class="canvasCell">
+                <p>Back Face</p>
+                <canvas id="back" class="paintable" width="200" height="200"></canvas>
+                <p><input id="backFile" type="file" accept="image/jpeg, image/png"></p>
+            </div>
+        </div>
+    </div>
+    <div class="settingsMenu">
+        <p>Line thickness: <input id="widthInput" type="range" min="1" max="20" value="5"><span id="widthOutput">2</span></p>
+        <p>Color: <input id="colorInput" type="color"></p>
+        <p>Background color: <input id="backgroundInput" type="color" value="#FFFFFF"></p>
+    </div>
+    <div class="buttonMenu">
+        <button id="update">Update</button>
+        <button id="reset">Reset</button>
+        <button id="help">Help</button>
+    </div>
+
+    <!-- This is the help screen, which will normally be hidden -->
+    <div id="helpScreen" hidden>
+        <h2>Cube Controls</h2>
+        <ul>
+            <li>Click + drag: rotate cube</li>
+            <li>Click + shift + drag: move cube</li>
+        </ul>
+        <h2>Face Painting Controls</h2>
+        <ul>
+            <li>Click once: select face</li>
+            <li>Click after selected: paint on face</li>
+            <li>Escape key: deselect current face</li>
+            <li>Click outside of a face: deselect current face</li>
+        </ul>
+        <h2>Painting Settings</h2>
+        <ul>
+            <li>Line thickness: the thickness of the line</li>
+            <li>Color: the color of the line to be drawn</li>
+            <li>
+                Background color:
+                <ul>
+                    <li>If a face is selected: set the background color for that face</li>
+                    <li>If no face is selected: set the background color for all faces</li>
+                </ul>
+            </li>
+            <li>Update: update the cube with the painted faces</li>
+            <li>
+                Reset:
+                <ul>
+                    <li>If a face is selected: reset the selected face</li>
+                    <li>If no face is selected: reset all faces and settings</li>
+                </ul>
+            </li>
+            <li>Help: bring up this screen</li>
+        </ul>
+    </div>
+</body>
+</html>
